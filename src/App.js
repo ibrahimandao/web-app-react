@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import React  from 'react';
 import './App.css';
+import Etudiant from './components/Etudiant';
+import {Route,Link,Routes,BrowserRouter as Router} from 'react-router-dom'
+import Formation from './components/Formation';
+import Formateur from './components/Formateur';
+import Module from './components/Module';
+import Planning from './components/Planning';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <Router>
+      <nav className="navbar navbar-expand navbar-brand">
+        <ul className="navbar-nav">
+          <li><Link  className="nav-link" to="/etudiant">Etudiant</Link></li>
+          <li><Link  className="nav-link" to="/formation">Formation</Link></li>
+          <li><Link  className="nav-link" to="/formateur">Formateur</Link></li>
+          <li><Link  className="nav-link" to="/module">Module</Link></li>
+          <li><Link  className="nav-link" to="/planning">Planning cours</Link></li>
+        </ul>     
+      </nav>
+   
+    <div className="container">        
+          <Routes>
+              <Route path="/etudiant" element={ <Etudiant />}/>
+              <Route path="/formation" element={ <Formation />}/>
+              <Route path="/formateur" element={ <Formateur />}/>
+              <Route path="/module" element={ <Module />}/>
+              <Route path="/planning" element={ <Planning />}/>
+          </Routes>     
     </div>
+    </Router>
+    </div>
+    
   );
 }
 
