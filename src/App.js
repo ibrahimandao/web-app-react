@@ -9,7 +9,7 @@ import Planning from './components/Planning';
 
 function App() {
   return (
-    <div>
+    <div className='m-5'>
     <Router>
       <nav className="navbar navbar-expand navbar-brand">
         <ul className="navbar-nav">
