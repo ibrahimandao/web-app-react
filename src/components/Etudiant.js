@@ -1,6 +1,7 @@
 import React , { Component}  from 'react';
 import         { render   }  from 'react-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Etudiant extends Component {
 
@@ -30,6 +31,8 @@ class Etudiant extends Component {
         return(
            <div> 
             <strong> La liste des étudiants inscrits</strong>
+            <div className='container'>
+            <Link className='btn btn-primary' to="/AjoutEtudiant">Ajouter</Link>
             <table className='table'>
                 <thead>
                     <th>Nom</th>
@@ -54,6 +57,8 @@ class Etudiant extends Component {
                     }
                 </tbody>
             </table>
+            </div>
+            
 
             </div>
         );

@@ -42,7 +42,7 @@ class Module extends Component {
                         this.state.modules.map(item=>
                            <tr key={item.id}>
                                 <td>{item.descriptif}</td>
-                                <td><input type="Checkbox" checked></input></td>
+                                <td>{<input type="Checkbox" checked={item.isOneline} read-only="true"/>}</td>
                                 <td>{item.formateur.name}</td>
                                 <td>{item.formateur.firstname}</td>
                                 <td>{item.formateur.email}</td>
