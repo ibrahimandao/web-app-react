@@ -1,5 +1,6 @@
 import React , { Component}  from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Formation extends Component {
 
@@ -33,6 +34,7 @@ class Formation extends Component {
                  <thead>
                      <th>Descriptif</th>
                      <th>Niveau</th>
+                     <th>Action</th>
                  </thead>
                  <tbody>
                      {
@@ -40,6 +42,9 @@ class Formation extends Component {
                             <tr key={item.id}>
                                  <td>{item.libelle}</td>
                                  <td>{item.niveau} année</td>
+                                 <td>
+                                    <Link to={"/modifformation/"+item.id}><img src="/img/modif.jfif" width="25px" height="25px"/></Link>                               
+                                </td>
                             </tr>                            
                          )
                      }

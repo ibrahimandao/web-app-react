@@ -7,6 +7,8 @@ import Formateur from './components/Formateur';
 import Module from './components/Module';
 import Planning from './components/Planning';
 import AjoutEtudiant from './components/AjoutEtudiant';
+import ModifierEtudiant from './components/ModifierEtudiant';
+import ModifierFormation from './components/ModifierFormation';
 
 function App() {
   return (
@@ -31,7 +33,8 @@ function App() {
               <Route path="/planning" element={ <Planning />}/>
 
               <Route path="/AjoutEtudiant" element={ <AjoutEtudiant />}/>
-              <Route path="/ModifEtudiant/:id" element={ <AjoutEtudiant />}/>
+              <Route path="/modifetudiant/:id" element={ <ModifierEtudiant />}/>
+              <Route path="/modifformation/:id" element={ <ModifierFormation />} />
           </Routes>     
     </div>
     </Router>

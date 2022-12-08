@@ -27,7 +27,7 @@ class Etudiant extends Component {
         this.getStudent();        
     }
 
-    render(){
+    render(){       
         return(
            <div> 
             <strong> La liste des étudiants inscrits</strong>
@@ -39,8 +39,11 @@ class Etudiant extends Component {
                     <th>Prénom</th>
                     <th>Email</th>
                     <th>Matricule</th>
+                    <th>Formation</th>
+                    <th>Niveau</th>
                     <th>Téléphone</th>
                     <th>Ville</th>
+                    <th>Action</th>
                 </thead>
                 <tbody>
                     {
@@ -50,8 +53,13 @@ class Etudiant extends Component {
                                 <td>{item.firstname}</td>
                                 <td>{item.email}</td>
                                 <td>{item.matricule}</td>
+                                <td>{item.formation.libelle}</td>
+                                <td>{item.formation.niveau} ième année</td>
                                 <td>{item.phone}</td>
                                 <td>{item.city}</td>
+                                <td>
+                                    <Link to={"/modifetudiant/"+item.id}><img src="/img/modif.jfif" width="25px" height="25px"/></Link>                               
+                                </td>
                            </tr>                            
                         )
                     }
