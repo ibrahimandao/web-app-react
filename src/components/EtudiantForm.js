@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Alerte from './Alerte';
 
 class EtudiantForm extends Component {
     constructor(props){
@@ -9,11 +10,13 @@ class EtudiantForm extends Component {
             prenom:this.props.action ==='Add' ? '' : this.props.etudiant.firstname,
             email :this.props.action ==='Add' ? '' : this.props.etudiant.email,
             ville : this.props.action ==='Add' ? '' : this.props.etudiant.city,
-            formationid : this.props.action ==='Add' ? '' : this.props.etudiant.formationId,
+            formationid : this.props.action ==='Add' ? '3' : this.props.etudiant.formationId,
             matricule : this.props.action ==='Add' ? '' : this.props.etudiant.matricule,
             telephone : this.props.action ==='Add' ? '' : this.props.etudiant.phone,  
+            id : this.props.action ==='Add' ? '' : this.props.id,
             formation : [],
-            action : this.props.action         
+            action : this.props.action,
+            alerte : false         
         }
      }
      
@@ -37,7 +40,9 @@ class EtudiantForm extends Component {
         if(this.props.action ==='Add')
            this.props.validateForm(etu);
         else
-           this.props.validateForm(this.props.match.params.id,etu);
+           this.props.validateForm(this.state.id,etu);
+        
+        this.setState({alerte : true});
     }
     componentDidMount(){
        this.getFormation();
@@ -78,11 +83,15 @@ class EtudiantForm extends Component {
         this.setState({telephone: event.target.value});
      }
      handleFormationChange=(event) =>{
-        this.setState({formationid: event.target.value});
+        console.log(event.target.value)
+        this.setState({formationid: event.target.value},()=>console.log(this.state.formationid));
      }
+     
     render() {
         return (
-            <form onSubmit={this.doValidation}>
+            <div className='container'>              
+                 <Alerte showAlerte={this.state.alerte} />          
+                <form onSubmit={this.doValidation}>
                 <h1>Création d'un étudiant:</h1>
                 <div className='form-group'>
                     <label>Nom:</label>            
@@ -131,6 +140,8 @@ class EtudiantForm extends Component {
                 
                 <button type="submit" className = "btn btn-primary mt-2">Valider</button>
             </form>
+            </div>
+            
         );
     }
 }

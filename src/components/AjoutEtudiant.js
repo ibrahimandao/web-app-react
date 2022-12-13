@@ -17,7 +17,7 @@ class AjoutEtudiant extends Component {
 
     render() {
         return (
-            <EtudiantForm action='Add' validateForm ={this.handleSubmit}></EtudiantForm>
+            <EtudiantForm action='Add' validateForm ={this.handleSubmit}/>
         );
     }
 }

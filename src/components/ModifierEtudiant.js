@@ -1,19 +1,31 @@
-import React, { Component,useEffect } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios'
 import EtudiantForm from './EtudiantForm';
+import {withRouter} from 'react-router';
+import { useParams } from "react-router-dom";
+
+function withParams(Component) {
+  return props => <Component {...props} params={useParams()} />;
+}
+
 
 class ModifierEtudiant extends Component {
     constructor(props){
         super(props);
         this.state = {
-            etudiant : null        
+            etudiant : null,
+            id : 0        
         }      
         
      }
 
     componentDidMount(){
-        let id = this.props.match.params.id
-        this.getEtudiantById(id);
+        this.setState(
+            {
+                id : this.props.params.id
+            },()=> this.getEtudiantById(this.state.id)
+        ) 
+       
     }
 
     getEtudiantById(id){
@@ -40,7 +52,7 @@ class ModifierEtudiant extends Component {
     render() {
         if(this.state.etudiant != null)
             return (
-                <EtudiantForm action='Edit' etudiant={this.state.etudiant} validateForm ={this.handleUpdate}/>
+                <EtudiantForm action='Edit' etudiant={this.state.etudiant} validateForm ={this.handleUpdate} id={this.state.id}/>
             );
         else{
             return(<div></div>)
@@ -48,4 +60,4 @@ class ModifierEtudiant extends Component {
     }
 }
 
-export default ModifierEtudiant;
+export default withParams(ModifierEtudiant);

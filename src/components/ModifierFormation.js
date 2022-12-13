@@ -1,8 +1,8 @@
-import React, { Component,useEffect } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios'
+import FormationForm from './FormationForm'
 
 class ModifierFormation extends Component {
-     test = null;
     constructor(props){
         super(props);
         this.state = {
@@ -12,45 +12,33 @@ class ModifierFormation extends Component {
      getFormationById(){
         let url = "http://localhost:5154/api/Formation/find/3"
         axios.get(url).then((response)=>{
-          return response;
+          this.setState({
+            formation : response
+          })
         }).catch((err) =>{
             console.log(err)
-        })
-        return null;
+        })        
     }
 
      componentWillMount(){
-        this.test = this.getFormationById();
-        console.log(this.test)
+        
      }
      componentDidMount(){
-        this.setState({
-            formation : this.test
-        })
+        this.getFormationById();
      }
     ValidForm=()=>{
  
     }
 
     render() {        
+        if(this.state.formation != null)
+            return (
+                <FormationForm action='Edit' formation={this.state.formation} />
+            );
+        else{
+            return(<div></div>)
+        }
         
-        return (
-            <form onSubmit={this.ValidForm} >
-                <h1>Modification d'une formation:</h1>
-                <div className='form-group'>
-                    <label>Descriptif:</label>            
-                    <input className="w-25 form-control" type="text" value={this.state.formation.libelle}  />
-                </div> 
-
-                <div className='form-group'>
-                    <label>Niveau:</label>            
-                    <input className="w-25 form-control" type="text" value={this.state.formation.niveau}  />
-                </div>       
-                
-                
-                <button type="submit" className = "btn btn-primary mt-2">Update</button>
-        </form>
-        );
     }
 }
 
