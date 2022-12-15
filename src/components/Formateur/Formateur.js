@@ -37,6 +37,7 @@ class Formateur extends Component {
                      <th>Nom</th>
                      <th>Prénom</th>
                      <th>Email</th>
+                     <th>Action</th>
                  </thead>
                  <tbody>
                      {
@@ -45,6 +46,9 @@ class Formateur extends Component {
                                  <td>{item.name}</td>
                                  <td>{item.firstname}</td>
                                  <td>{item.email}</td>
+                                 <td>
+                                    <Link to={"/modifformateur/"+item.id}><img src="/img/modif.jfif" width="25px" height="25px"/></Link>                               
+                                </td>
                             </tr>                            
                          )
                      }
