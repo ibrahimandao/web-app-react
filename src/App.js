@@ -1,14 +1,17 @@
 import React  from 'react';
 import './App.css';
-import Etudiant from './components/Etudiant';
+import Etudiant from './components/Etudiant/Etudiant';
 import {Route,Link,Routes,BrowserRouter as Router} from 'react-router-dom'
-import Formation from './components/Formation';
-import Formateur from './components/Formateur';
-import Module from './components/Module';
-import Planning from './components/Planning';
-import AjoutEtudiant from './components/AjoutEtudiant';
-import ModifierEtudiant from './components/ModifierEtudiant';
-import ModifierFormation from './components/ModifierFormation';
+import Formation from './components/Formation/Formation';
+import Formateur from './components/Formateur/Formateur';
+import Module from './components/Module/Module';
+import Planning from './components/Planning/Planning';
+import AjoutEtudiant from './components/Etudiant/AjoutEtudiant';
+import ModifierEtudiant from './components/Etudiant/ModifierEtudiant';
+import ModifierFormation from './components/Formation/ModifierFormation';
+import AjoutFormation from './components/Formation/AjoutFormation';
+import ModifierFormateur from './components/Formateur/ModifierFormateur'
+import AjoutFormateur from './components/Formateur/AjoutFormateur'
 
 function App() {
   return (
@@ -33,8 +36,12 @@ function App() {
               <Route path="/planning" element={ <Planning />}/>
 
               <Route path="/AjoutEtudiant" element={ <AjoutEtudiant />}/>
+              <Route path="/AjoutFormation" element={ <AjoutFormation />}/>
+              <Route path="/AjoutFormateur" element={ <AjoutFormateur />}/>
+
               <Route path="/modifetudiant/:id" element={ <ModifierEtudiant />}/>
               <Route path="/modifformation/:id" element={ <ModifierFormation />} />
+              <Route path="/modifformateur/:id" element={ <ModifierFormateur />} />
           </Routes>     
     </div>
     </Router>

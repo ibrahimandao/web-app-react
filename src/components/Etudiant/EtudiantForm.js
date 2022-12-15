@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Alerte from './Alerte';
+import Alerte from '../Commun/Alerte';
 
 class EtudiantForm extends Component {
     constructor(props){
@@ -36,7 +36,7 @@ class EtudiantForm extends Component {
         form.niveau=0;
 
         etu.formation=form;
-        console.log(JSON.stringify(etu))
+        //console.log(JSON.stringify(etu))
         if(this.props.action ==='Add')
            this.props.validateForm(etu);
         else
@@ -83,8 +83,7 @@ class EtudiantForm extends Component {
         this.setState({telephone: event.target.value});
      }
      handleFormationChange=(event) =>{
-        console.log(event.target.value)
-        this.setState({formationid: event.target.value},()=>console.log(this.state.formationid));
+        this.setState({formationid: event.target.value});
      }
      
     render() {

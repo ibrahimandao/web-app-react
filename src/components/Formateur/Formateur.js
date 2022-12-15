@@ -1,5 +1,6 @@
 import React , { Component}  from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Formateur extends Component {
 
@@ -28,7 +29,9 @@ class Formateur extends Component {
      render(){
          return(
             <div> 
-             <strong> La liste des formateurs inscrits</strong>
+             <strong> La liste des formateurs reconnus :</strong>
+             <div className='container'>
+             <Link className='btn btn-primary' to="/AjoutFormateur">Ajouter</Link>
              <table className='table'>
                  <thead>
                      <th>Nom</th>
@@ -47,6 +50,8 @@ class Formateur extends Component {
                      }
                  </tbody>
              </table>
+             </div>
+             
  
              </div>
          );

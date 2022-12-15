@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import EtudiantForm from './EtudiantForm';
-import {withRouter} from 'react-router';
 import { useParams } from "react-router-dom";
 
 function withParams(Component) {
